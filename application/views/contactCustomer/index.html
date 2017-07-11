@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>海外留学系统系统登陆页面</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="海外留学系统" name="description" />
+    <meta content="157253173@qq.com" name="author" />
+    <!-- 加载css -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+      <link rel="stylesheet" type="text/css" href="/static/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="/static/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/plugins/uniform/css/uniform.default.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/static/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/static/css/custom.min.css">
+    <!--css 加载结束-->
+</head>
+<body >
+  <div   id="app">
+    <div class="table-container">
+      <div class="table-form">
+        <form action="" class="form-inline">
+          <div class="form-group">
+            <label>学生姓名:</label>
+            <input class="form-control" placeholder="学生姓名" name="u_name"></input>
+          </div>
+          <div class="form-group">
+            <label>手机号</label>
+            <input class="form-control" placeholder="手机号" name="u_phone"></input>
+          </div>
+          <div class="form-group">
+            <label>目前学历</label>
+            <select class="form-control" placeholder="目前学历" name="">
+              <option></option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-default">搜索</button>
+          </div>
+        </form>
+      </div>
+      <div class="table-tools">
+        <button class="btn btn-default" @click="showAddStudentsForm"><i class="fa fa-plus" ></i>新增</button>
+        <button class="btn btn-warning"><i class="fa fa-close"></i>删除</button>
+        <button class="btn btn-success"><i class="fa fa-refresh"></i>刷新</button>
+        <button class="btn btn-default"><i class="fa fa-cloud-upload"></i>导入</button>
+        <button class="btn btn-default"><i class="fa fa-cloud-download"></i>导出</button>
+        <button class="btn btn-default"><i class="fa fa-pl"></i>有效性判定</button>
+      </div>
+      <div class="table-content">
+          <table id="table">
+          
+          </table>
+      </div>
+    </div>
+    <!--隐藏的模态框-->
+    <modal v-model="addStudentModal" title="增加用户表格"  effect="fade" :large="true">
+      <div class="modal-body" slot="modal-body">
+        <form class="form-inline">
+            
+         
+          <div class="row">
+            <div class="col-sm-9">
+                <div class="form-group">
+                  <label>详细信息</label>
+                 
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>学生姓名</label>
+                  <input type="text" class="form-control"  placeholder="用户名" v-model="addStudentForm.u_student_name">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>性别</label>
+                  <select class="form-control"  placeholder="用户名" v-model="addStudentForm.u_student_gender">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                  </select>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>手机号</label>
+                  <input type="text" class="form-control"  placeholder="手机号" v-model="addStudentForm.u_student_mobile">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>微信号</label>
+                  <input type="text" class="form-control"  placeholder="微信号" v-model="addStudentForm.u_student_wechat">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>邮箱</label>
+                  <input type="text" class="form-control"  placeholder="邮箱" v-model="addStudentForm.u_student_email">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>学生来源</label>
+                  <select class="form-control"  placeholder="学生来源" v-model="addStudentForm.u_student_origin">
+                    <option value="教育展">教育展</option>
+                    <option  value="老客户推荐">老客户推荐</option>
+                    <option  value="无预约上门">无预约上门</option>
+                    <option  value="咨询电话">咨询电话</option>
+                    <option  value="公司活动" >公司活动</option>
+                    <option  value="微信广告">微信广告</option>
+                    <option  value="天维网">天维网</option>
+                    <option  value="新浪微博">新浪微博</option>
+                    <option  value="百度贴吧">百度贴吧</option>
+                    <option  value="其它网络广告">其它网络广告</option>
+                    <option  value="合作伙伴">合作伙伴</option>
+                    <option  value="合作中介">合作中介</option>
+                    <option  value="朋友推荐">朋友推荐</option>
+                    <option  value="其它">其它</option>
+                  </select>
+                </div>
+            </div>
+     
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>所在城市</label>
+                  <input type="text" class="form-control"  placeholder="所在城市" v-model="addStudentForm.u_student_city">
+                </div>
+            </div>
+             <div class="col-xs-4">
+                <div class="form-group">
+                  <label>地址</label>
+                  <input type="text" class="form-control"  placeholder="地址" v-model="addStudentForm.u_student_address">
+             </div>
+            </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label>生日</label>
+                  <input type="date" class="form-control"  placeholder="生日" v-model="addStudentForm.u_student_birthday">
+                </div>
+            </div>
+
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label>推荐人</label>
+                  <input type="text" class="form-control"  placeholder="推荐人" v-model="addStudentForm.u_student_referrer">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>意向国家</label>
+                  <select class="form-control"  placeholder="意向国家" v-model="addStudentForm.u_intent_country">
+                    <option value="新西兰">新西兰</option>
+                    <option  value="澳洲">澳洲</option>
+                 
+                  </select>
+                </div>
+            </div> 
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>意向级别</label>
+                  <select class="form-control"  placeholder="意向级别" v-model="addStudentForm.u_intent_level">
+                    <option value="高">高</option>
+                    <option  value="较高">较高</option>
+                  <option value="中">中</option>
+                    <option  value="低">低</option>
+                  </select>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label>意向学校和专业</label>
+                  <input type="text" class="form-control"  placeholder="意向学校和专业" v-model="addStudentForm.u_intent_major">
+                </div>
+            </div>
+
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label>意向入学时间</label>
+                  <input type="date" class="form-control"  placeholder="意向入学时间" v-model="addStudentForm.u_intent_time">
+                </div>
+            </div>
+
+             <div class="col-sm-9">
+                <div class="form-group">
+                  <label>家庭总年收入</label>
+                  <input type="text" class="form-control"  placeholder="家庭总年收入" v-model="addStudentForm.u_family_income">
+                </div>
+            </div>
+       
+            <div class="col-sm-9">
+                <div class="form-group">
+                  <label>详细信息</label>
+                 
+                </div>
+            </div>
+             <div class="col-xs-4"  >
+                <div class="form-group">
+                  <label>目前学历</label>
+                  <input type="text" class="form-control"  placeholder="目前学历" v-model="addStudentForm.u_current_education">
+                </div>
+            </div>
+
+             <div class="col-xs-4">
+                <div class="form-group">
+                  <label>目前年级</label>
+                  <input type="text" class="form-control"  placeholder="目前年级" v-model="addStudentForm.u_current_grade">
+                </div>
+            </div>
+
+             <div class="col-xs-4">
+                <div class="form-group">
+                  <label>所在学校</label>
+                  <input type="text" class="form-control"  placeholder="所在学校" v-model="addStudentForm.u_current_school">
+                </div>
+            </div>
+
+             <div class="col-md-6">
+                <div class="form-group">
+                  <label>目前专业英语水平</label>
+                  <input type="text" class="form-control"  placeholder="目前专业英语水平" v-model="addStudentForm.u_english_level">
+                </div>
+            </div>
+
+             <div class="col-md-6">
+                <div class="form-group">
+                  <label>内考预定时间</label>
+                  <input type="date" class="form-control"  placeholder="内考预定时间" v-model="addStudentForm.u_test_time">
+                </div>
+            </div>
+
+             <div class="col-md-6">
+                <div class="form-group">
+                  <label>英语出成绩时间</label>
+                  <input type="date" class="form-control"  placeholder="英语出成绩时间" v-model="addStudentForm.u_grade_time">
+                </div>
+            </div>
+
+             <div class="col-xs-4">
+               <div class="form-group">
+                  <label>是否需要担保配偶</label>
+                  <select class="form-control"  placeholder="是否需要担保配偶" v-model="addStudentForm.u_sponsor_mate">
+                    <option value="1">是</option>
+                    <option  value="0">否</option>
+                  </select>
+                </div>
+            </div>
+            <div class="col-xs-4">
+               <div class="form-group">
+                  <label>是否需要担保小孩</label>
+                  <select class="form-control"  placeholder="是否需要担保小孩" v-model="addStudentForm.u_sponser_child">
+                    <option value="1">是</option>
+                    <option  value="0">否</option>
+                  </select>
+                </div>
+            </div>
+             <div class="col-xs-4">
+                <div class="form-group">
+                  <label>学习成绩</label>
+                  <input type="text" class="form-control"  placeholder="学习成绩" v-model="addStudentForm.u_student_score">
+                </div>
+            </div>
+               <div class="col-xs-4">
+               <div class="form-group">
+                  <label>当前签证类型</label>
+                  <select class="form-control"  placeholder="当前签证类型" v-model="addStudentForm.u_visa_type">
+                    <option value="国内无签证">国内无签证</option>
+                    <option  value="旅游签证">旅游签证</option>  
+                    <option value="学生签证">学生签证</option>
+                    <option  value="打工度假签证">打工度假签证</option>
+                      <option value="工作签证">工作签证</option>
+                    <option  value="限制性签证">限制性签证</option>
+                      <option value="签证过期">签证过期</option>
+                  </select>
+                </div>
+            </div>
+             <div class="col-xs-4">
+                <div class="form-group">
+                  <label>签证到期时间</label>
+                  <input type="date" class="form-control"  placeholder="签证到期时间" v-model="addStudentForm.u_visa_expdate">
+                </div>
+            </div>
+             <div class="col-xs-4">
+                <div class="form-group">
+                  <label>有无拒签史</label>
+                  <select class="form-control"  placeholder="有无拒签史" v-model="addStudentForm.u_visa_reject">
+                    <option value="1">有</option>
+                    <option  value="0">无</option>  
+                
+                  </select>
+                </div>
+            </div>
+ 
+             <div class="col-sm-9">
+                <div class="form-group">
+                  <label>出勤率</label>
+                  <input type="text" class="form-control"  placeholder="出勤率" v-model="addStudentForm.u_attendance_rate">
+                </div>
+            </div>
+
+             <div class="col-sm-9">
+                <div class="form-group">
+                  <label>备注</label>
+                 <input type="text" class="form-control"  placeholder="出勤率" v-model="addStudentForm.u_student_remark">
+                </div>
+            </div>
+
+            <div class="col-sm-9">
+                <div class="form-group">
+                  <label>家庭信息</label>
+                </div>
+            </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label>父亲姓名</label>
+                  <input type="text" class="form-control"  placeholder="父亲姓名" v-model="addStudentForm.u_father_name">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>父亲电话</label>
+                  <input type="text" class="form-control"  placeholder="父亲电话" v-model="addStudentForm.u_father_mobile">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>父亲生日</label>
+                  <input type="date" class="form-control"  placeholder="父亲生日" v-model="addStudentForm.u_father_birthday">
+                </div>
+            </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label>父亲工作</label>
+                  <input type="text" class="form-control"  placeholder="父亲工作" v-model="addStudentForm.u_father_work">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label>父亲年收入</label>
+                  <input type="text" class="form-control"  placeholder="父亲年收入" v-model="addStudentForm.u_father_income">
+                </div>
+            </div>
+ 
+             <div class="col-xs-4">
+                <div class="form-group">
+                  <label>母亲姓名</label>
+                  <input type="text" class="form-control"  placeholder="母亲姓名" v-model="addStudentForm.u_mother_name">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>母亲电话</label>
+                  <input type="text" class="form-control"  placeholder="母亲电话" v-model="addStudentForm.u_mother_mobile">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>母亲生日</label>
+                  <input type="date" class="form-control"  placeholder="母亲生日" v-model="addStudentForm.u_mother_birthday">
+                </div>
+            </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label>母亲工作</label>
+                  <input type="text" class="form-control"  placeholder="母亲工作" v-model="addStudentForm.u_mother_work">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label>母亲年收入</label>
+                  <input type="text" class="form-control"  placeholder="母亲年收入" v-model="addStudentForm.u_mother_income">
+                </div>
+            </div>
+             <div class="col-xs-4">
+                <div class="form-group">
+                  <label>配偶姓名</label>
+                  <input type="text" class="form-control"  placeholder="配偶姓名" v-model="addStudentForm.u_mate_name">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>配偶电话</label>
+                  <input type="text" class="form-control"  placeholder="配偶电话" v-model="addStudentForm.u_mate_mobile">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                  <label>配偶生日</label>
+                  <input type="date" class="form-control"  placeholder="配偶生日" v-model="addStudentForm.u_mate_birthday">
+                </div>
+            </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label>配偶工作</label>
+                  <input type="text" class="form-control"  placeholder="配偶工作" v-model="addStudentForm.u_mate_work">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label>配偶年收入</label>
+                  <input type="text" class="form-control"  placeholder="配偶年收入" v-model="addStudentForm.u_mate_income">
+                </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div slot="modal-footer" class="modal-footer">
+        <button type="button" class="btn btn-default" @click="addStudentModal = false">关闭</button>
+        <button type="button" class="btn btn-success" @click="addStudentFormSave">提交</button>
+      </div>
+    </modal>
+  </div>
+</body>
+<!-- 加载系统的js -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/utils.js"></script>
+<script src="/static/js/cgi.js"></script>
+<script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+<script src="/static/js/vue-strap.min.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/js/js.cookie.min.js"></script>
+<script src="/static/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/static/js/jquery.blockui.min.js"></script>
+<script src="/static/plugins/uniform/jquery.uniform.min.js"></script>
+<script src="/static/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<script src="/static/js/bootstrap-table.min.js"></script>
+<!-- Latest compiled and minified Locales -->
+<script src="/static/js/bootstrap-table-zh-CN.min.js"></script>
+<script src="/static/js/contact.table.js"></script>
+<!-- 系统的js -->
+<script>
+    for(var i in VueStrap){
+      Vue.component(i,VueStrap[i]);
+    }
+     var vm = new Vue({
+        el:"#app",
+        data:{
+          addStudentModal:false,
+          addStudentForm:{
+            u_student_name:'', //用户名
+            u_student_gender:'男',//性别
+            u_student_mobile:'',//电话
+            u_student_wechat:'',//微信号
+            u_student_email:'',//学生邮箱
+            u_student_origin:'教育展',//学生来源
+            u_student_address:'',//学生地址
+            u_student_city:'',//学生城市
+            u_student_birthday:'',//学生生日
+            u_student_referrer:'',//推荐人
+            u_intent_country:'新西兰',//意向城市
+            u_intent_time:'',//意向入学时间
+            u_family_income:'',//家庭总收入
+            u_current_education:'',//目前学历
+            u_current_school:'',//目前学校
+            u_current_major:'',//目前专业
+            u_current_grade:'',//目前年纪
+            u_english_level:'',//英语水平
+            u_test_time:'',//内考预定时间         
+            u_grade_time:'',//出成绩时间        
+            u_sponsor_mate:'',// 是否担保配偶  
+            u_sponser_child:'',   //是否担保小孩  
+            u_student_score:'',  //学生成绩   
+            u_visa_type:'国内无签证',      //签证类型   
+            u_visa_expdate:'',  //签证到期时间    
+            u_visa_reject:'',   //有无拒签史    
+            u_attendance_rate:'',   //出勤率
+            u_student_remark :'',   //备注
+            u_user_id:'',           //学生id
+            u_student_status:'',    
+            u_intent_level:'高',  //意向级别    
+            u_intent_major:''  , //意向学校和专业
+            u_father_name:'',//父亲姓名
+            u_father_mobile:'',//父亲电话
+            u_father_birthday:'',//父亲生日
+            u_father_work:'',//父亲工作
+            u_father_income:'',//父亲年收入
+            u_mother_name:'',//母亲姓名
+            u_mother_mobile:'',//母亲电话
+            u_mother_birthday:'',//母亲生日
+            u_mother_work:'',//母亲工作
+            u_mother_income:'',//母亲年收入
+            u_mate_name:'',//配偶姓名
+            u_mate_mobile:'',//配偶电话
+            u_mate_birthday:'',//配偶生日
+            u_mate_work:'',//配偶工作
+            u_mate_income:''//配偶年收入
+          }
+        },
+        methods:{
+          showAddStudentsForm:function(){
+            this.addStudentModal = true;
+          },
+          addStudentFormSave:function(){
+            console.log(this.addStudentForm);
+            var that = this;
+            //ajax提交表单
+            utils.ajaxPost(cgi.addStudents,this.addStudentForm).then(function(data){
+               if(data.reCode == 0){
+                 that.addStudentModal = false;
+                 alert("提交成功")
+               }
+            })
+            
+          }
+        }
+      })
+</script>
+</html>

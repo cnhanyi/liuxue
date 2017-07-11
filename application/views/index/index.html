@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>海外留学系统系统登陆页面</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="海外留学系统" name="description" />
+    <meta content="157253173@qq.com" name="author" />
+    <!-- 加载css -->
+    <link rel="stylesheet" type="text/css" href="/static/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="/static/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/plugins/uniform/css/uniform.default.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- 全局的css -->
+    <!-- 全局组件的css -->
+    <!-- 页面的布局的css -->
+    <link href="/static/css/layout.min.css" rel="stylesheet" />
+    <link href="/static/css/grey.min.css" rel="stylesheet" />
+    <!-- 菜单 -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.metismenu/2.7.0/metisMenu.min.css">
+    
+</head>
+
+<body>
+    <!-- 头部信息 -->
+    <div class="page-header navbar">
+        <div class="page-header-inner ">
+            <!-- Logo部分 -->
+            <div class="page-logo">
+                <a href="#"><span class="logo-default">留学软件</span></a>
+                <div class="menu-toggler sidebar-toggler"> </div>
+            </div>
+            <!-- LOGO部分结束 -->
+            <!-- 响应式的图标显示 -->
+            <a href="javascript:void(0);" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+            <!-- 响应式的图标显示 结束-->
+            <!-- 开始右边的菜单项目 -->
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="icon-bell"></i>
+                            <span class="badge badge-default"> 7 </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right" >
+                            <li class="external">
+                                <h3>
+                                  <span class="bold">12条</span> 通知</h3>
+                                <a href="/">查看所有</a>
+                            </li>
+                            <li>
+                                <ul class="dropdown-menu-list scrolle " style="height: 250px;" data-handle-color="#637283">
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">2017-05-01</span>
+                                            <span class="details">
+                                            <span class="label label-sm label-icon label-success">
+                                            <i class="fa fa-plus"></i>
+                                            </span> 新增加一个留学的学生在流程中 </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown dropdown-user">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <img alt="头像" class="img-circle" src="/static/avtor/avatar3_small.jpg" />
+                            <span class="username username-hide-on-mobile"><?php echo $_SESSION['account'];?> </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="page_user_profile_1.html">
+                                    <i class="icon-user"></i> 设置 </a>
+                            </li>
+                            <li>
+                                <a href="app_calendar.html">
+                                    <i class="icon-calendar"></i> 日历 </a>
+                            </li>
+                            <li>
+                                <a href="app_inbox.html">
+                                    <i class="icon-envelope-open"></i> 我的流程
+                                    <span class="badge badge-danger"> 3 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="app_todo.html">
+                                    <i class="icon-rocket"></i> 待处理任务
+                                    <span class="badge badge-success"> 7 </span>
+                                </a>
+                            </li>
+                            <li class="divider"> </li>
+                            <li>
+                                <a href="page_user_lock_1.html">
+                                    <i class="icon-lock"></i> 锁屏 </a>
+                            </li>
+                            <li>
+                                <a href="/index.php/getway/logout">
+                                    <i class="icon-key"></i> 退出 </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown dropdown-quick-sidebar-toggler">
+                        <a href="/index.php/getway/logout" class="dropdown-toggle">
+                            <i class="icon-logout"></i>
+                        </a>
+                    </li>
+                    <!-- END QUICK SIDEBAR TOGGLER -->
+                </ul>
+            </div>
+            <!-- 右边菜单结束 -->
+        </div>
+    </div>
+    <!-- 头部信息结束 -->
+    <!-- 左边导航栏部分 -->
+    <div class="page-container">
+        <!-- 左边侧边栏 -->
+        <div class="page-sidebar">
+            <ul class="metismenu" id="menu">
+                <li class="nav-item">
+                    <a aria-expanded="true" class="nav-link">
+                        <i class="icon-home"></i>
+                        <span class="title">OA平台</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item">
+                            <a href="/index.php/OA_platform" class="nav-link ">
+                                <span class="title">待办工作</span>
+                                <span class="selected"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item start ">
+                            <a href="/index.php/OA_platform/PublicInform" class="nav-link ">
+                                <span class="title">通知公告</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start ">
+                            <a href="/index.php/OA_platform/BirthdayInform" class="nav-link ">
+                                <span class="title">学生生日提醒</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a aria-expanded="false" class="nav-link">
+                        <i class="icon-diamond"></i>
+                        <span class="title">活动管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item">
+                            <a href="/index.php/Activity_manage" class="nav-link ">
+                                <span class="title">活动计划</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/index.php/Activity_manage/ActivityManage" class="nav-link ">
+                                <span class="title">活动管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/Activity_manage/ActivitySummary" class="nav-link ">
+                                <span class="title">活动总结</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a aria-expanded="false" class="nav-link">
+                        <i class="icon-puzzle"></i>
+                        <span class="title">留学前期</span>
+                       <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item">
+                            <a href="/index.php/Contract_customer" class="nav-link">
+                                <span class="title">待签约客户列表</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/index.php/Contract_customer/visitRecord" class="nav-link ">
+                                <span class="title">咨询记录</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/index.php/Contract_customer/visitRemind" class="nav-link ">
+                                <span class="title">回访提醒</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="/index.php/Contract_customer/conPlan" class="nav-link ">
+                                <span class="title">咨询预案</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/Contract_customer/contractAnalysis" class="nav-link ">
+                                <span class="title">未签约分析</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/Contract_customer/contractSummary" class="nav-link ">
+                                <span class="title">签约总结</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a aria-expanded="false" class="nav-link">
+                        <i class="icon-settings"></i>
+                        <span class="title">留学中期</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item">
+                            <a href="/index.php/Contract_customer_middle" class="nav-link ">
+                                <span class="title">签约客户列表</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/index.php/Contract_customer_middle/customerList" class="nav-link ">
+                                <span class="title">客户资料管理</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a aria-expanded="false" class="nav-link">
+                        <i class="icon-bulb"></i>
+                        <span class="title">留学后期</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item ">
+                            <a href="/index.php/Contract_customer_after" class="nav-link ">
+                                <span class="title">在办学生</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/Contract_customer_after/VisaManagement" class="nav-link ">
+                                <span class="title">签证管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/Contract_customer_after/Accommodation" class="nav-link ">
+                                <span class="title">住宿接机</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a aria-expanded="false" class="nav-link">
+                        <i class="icon-briefcase"></i>
+                        <span class="title">结案学生</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="/index.php/End_student" class="nav-link nav-toggle">
+                                <span class="title">结案学生列表</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/End_student/MoneyManage" class="nav-link ">
+                                <span class="title">佣金管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/End_student/ConsultBackRecord" class="nav-link ">
+                                <span class="title">客服回访记录</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a  href="/index.php/School_manage" aria-expanded="false" class="nav-link">
+                        <i class="icon-wallet"></i>
+                        <span class="title">院校管理</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a aria-expanded="false" class="nav-link">
+                        <i class="icon-bar-chart"></i>
+                        <span class="title">财务管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="/index.php/Financial_manage" class="nav-link ">
+                                <span class="title">服务费收费列表</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/Financial_manage/WithdrawList" class="nav-link ">
+                                <span class="title">服务费退费列表</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/Financial_manage/ChargeDetail" class="nav-link ">
+                                <span class="title">服务费收支明细</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/Financial_manage/StudentIncome" class="nav-link ">
+                                <span class="title">学生代收款收入</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/Financial_manage/StudentPay" class="nav-link ">
+                                <span class="title">学生代收款支出</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/Financial_manage/StudentDetail" class="nav-link ">
+                                <span class="title">学生代收款收支明细</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/Financial_manage/FinanceTotal" class="nav-link ">
+                                <span class="title">财务总收支</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a aria-expanded="false" class="nav-link">
+                        <i class="icon-pointer"></i>
+                        <span class="title">报表中心</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="" class="nav-link ">
+                                <span class="title">资源来源分析</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="" class="nav-link ">
+                                <span class="title">签约转化分析</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="" class="nav-link ">
+                                <span class="title">申请数量报表</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="" class="nav-link ">
+                                <span class="title">签证数量报表</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="" class="nav-link ">
+                                <span class="title">实际就读学生</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="" class="nav-link ">
+                                <span class="title">佣金明细报表</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="" class="nav-link ">
+                                <span class="title">顾问销售业绩报表</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a aria-expanded="false" class="nav-link">
+                        <i class="icon-layers"></i>
+                        <span class="title">系统信息</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="/index.php/Operation_log" class="nav-link ">
+                                <span class="title">操作日志</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="/index.php/Operation_log/User" class="nav-link ">
+                                <span class="title">用户帐号</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- 左边侧边栏结束 -->
+        <!-- 内容部分 -->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <!-- BEGIN PAGE BAR -->
+                <div class="page-content-container">
+                    <div class="row iframeTabs">
+                         <button class="roll-nav roll-left iframeTabsLeft"><i class="fa fa-backward"></i></button>
+                         <nav class="page-tabs">
+                             <div class="page-tabs-content" style="margin-left: 0px;">
+                                <a  class="iframeTabs-item active" data-id="/index">首页</a>
+                         </nav>
+                         <button class="roll-nav roll-right iframeTabsRight"><i class="fa fa-forward"></i></button>  
+                         <div class="btn-group roll-nav roll-right">
+                            <button class="dropdown" data-toggle="dropdown" aria-expanded="true">关闭操作<span class="caret"></span>
+                            </button>
+                            <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                                <li class="J_tabShowActive"><a>定位当前选项卡</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                                </li>
+                                <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row iframeContent
+">
+                        <iframe class="iframeFrame" name="iframe1" width="100%" height="100%" src="/index" frameborder="0" data-id="/index" seamless></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 内容部分结束 -->
+    </div>
+    <!-- 左边导航栏部分结束 -->
+</body>
+<!-- 加载系统的js -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/js/js.cookie.min.js"></script>
+<script src="/static/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/static/js/jquery.blockui.min.js"></script>
+<script src="/static/plugins/uniform/jquery.uniform.min.js"></script>
+<script src="/static/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<script src="//cdn.jsdelivr.net/jquery.metismenu/2.7.0/metisMenu.min.js"></script>
+<!-- 加载系统的js -->
+<!-- 加载分页的js和当前的主页 -->
+<script src="/static/js/app.js"></script>
+
+
+</html>

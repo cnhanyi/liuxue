@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="utf-8" />
+    <title>海外留学系统系统登陆页面</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="海外留学系统" name="description" />
+    <meta content="307142162@qq.com" name="author" />
+    <!-- 加载css -->
+    <link rel="stylesheet" type="text/css" href="/static/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="/static/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/plugins/uniform/css/uniform.default.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- 全局的css -->
+    <!-- 页面的css -->
+    <link href="/static/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- 页面需要的组件的css -->
+    <!-- 全局组件的css -->
+    <link href="/static/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="/static/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/login.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="login">
+    <div class="menu-toggler sidebar-toggler"></div>
+    <div class="logo">
+        <a>海外留学软件</a>
+    </div>
+    <div class="content">
+        <!-- BEGIN LOGIN FORM -->
+            <form class="login-form" action="/index.php/getway/login" method="post">
+                <h3 class="form-title font-green">用户登陆页面</h3>
+                <div class="alert alert-danger display-hide">
+                    <button class="close" data-close="alert"></button>
+                    <span> 请输入正确的用户名和密码</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">用户名:</label>
+                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="用户名" name="account" /> </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">密码:</label>
+                    <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="密码" name="pwd" /> </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn green uppercase">登录</button>
+                    <label class="rememberme check">
+                    <input type="checkbox" name="remember" value="1" />记住 </label>
+                    <a href="javascript:;" id="forget-password" class="forget-password">忘记，密码?</a>
+                </div>
+                <div class="create-account">
+                    <p>
+                        <a href="javascript:;" id="register-btn" class="uppercase">互联科技技术赞助</a>
+                    </p>
+                </div>
+            </form>
+            <!-- END LOGIN FORM -->    
+    </div>
+    <div class="copyright"> 2017 ©海外留学软件 </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/js/js.cookie.min.js"></script>
+    <script src="/static/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/static/js/jquery.blockui.min.js"></script>
+    <script src="/static/plugins/uniform/jquery.uniform.min.js"></script>
+    <script src="/static/plugins/bootstrap-switch/js/bootstrap-switch.min.js" ></script>
+    <script src="/static/plugins/jquery-validation/js/jquery.validate.min.js"></script>
+    <script src="/static/plugins/jquery-validation/js/additional-methods.min.js"></script>
+    <script src="/static/plugins/select2/js/select2.full.min.js"></script>
+    <script src="/static/js/login.js"></script>
+</body>
+</html>
